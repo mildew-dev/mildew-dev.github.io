@@ -1,34 +1,37 @@
-/* styles.css */
-/* 전체 헤더 스타일 */
+/* ==============================
+   공통 컨테이너
+   ============================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ==============================
+   헤더 (Header)
+   ============================== */
 .site-header {
   width: 100%;
   background-color: #ffffff;
-  /* 아래 그림자(optional) */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* 가운데 정렬 & 패딩 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  height: 64px;            /* 헤더 높이 지정 */
+.site-header .container {
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* 로고 텍스트 */
 .logo {
   font-size: 1.25rem;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
-/* 카카오 로그인 버튼 */
 .btn.kakao-login {
   background-color: #FEE500;
   color: #3C1E1E;
@@ -44,9 +47,92 @@
   background-color: #ffd800;
 }
 
-/* 반응형 예시 (화면이 좁아지면 패딩 조정) */
+/* ==============================
+   메인 (Main)
+   ============================== */
+.site-main {
+  /* 필요 시 padding/margin 추가 */
+  padding: 40px 0;
+}
+
+/* ==============================
+   푸터 (Footer)
+   ============================== */
+.site-footer {
+  background-color: #f8f8f8;
+  color: #555;
+  font-size: 0.875rem;
+  margin-top: 64px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 240px;
+}
+
+.footer-logo {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.footer-desc {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.footer-social a {
+  margin-right: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: #000;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* ==============================
+   반응형 조정 (Responsive)
+   ============================== */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 24px 0;
+  }
+  .footer-left,
+  .footer-right {
+    min-width: 100%;
+    margin-bottom: 24px;
+  }
+}
+
 @media (max-width: 600px) {
-  .container {
+  .site-header .container {
     padding: 0 8px;
     height: 56px;
   }
