@@ -1,208 +1,108 @@
 /* ==============================
-   공통 컨테이너
+   초기화 & 공통
    ============================== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+* { box-sizing: border-box; margin: 0; padding: 0 }
+body { font-family: 'Noto Sans KR', sans-serif; color: #333; line-height: 1.5 }
+a { text-decoration: none; color: inherit }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 16px }
+.btn { display: inline-block; border-radius: 4px; cursor: pointer; transition: background-color 0.2s }
 
 /* ==============================
-   헤더 (Header)
+   헤더(Header)
    ============================== */
 .site-header {
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100;
 }
 .site-header .container {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
 }
-.logo {
-  font-size: 1.25rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+.logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 1px }
 .btn.kakao-login {
-  background-color: #FEE500;
-  color: #3C1E1E;
-  border: none;
-  padding: 8px 16px;
-  font-size: 0.875rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  background: #FEE500; color: #3C1E1E; border: none;
+  padding: 8px 16px; font-size: 0.875rem;
 }
-.btn.kakao-login:hover {
-  background-color: #ffd800;
-}
+.btn.kakao-login:hover { background: #ffd800 }
 
 /* ==============================
-   메인 (Main)
+   메인(Main) & 히어로(Hero)
    ============================== */
-.site-main {
-  padding: 40px 0;
-}
-
-/* ==============================
-   히어로 섹션 (Hero)
-   ============================== */
-.hero-section {
-  padding: 60px 0;
-}
+.site-main { padding: 40px 0 }
+.hero-section { padding: 60px 0 }
 .hero-content {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
 }
-.hero-text {
-  flex: 1 1 400px;
-}
+.hero-text { flex: 1 1 400px }
 .hero-badge {
-  display: inline-block;
-  font-size: 0.875rem;
-  color: #22c55e;
-  margin-bottom: 12px;
+  font-size: 0.875rem; color: #22c55e; margin-bottom: 12px;
 }
 .hero-title {
-  font-size: 2rem;
-  margin: 0 0 16px;
-  line-height: 1.2;
+  font-size: 2rem; margin-bottom: 16px; line-height: 1.2;
 }
 .hero-subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 24px;
-  line-height: 1.6;
+  font-size: 1rem; color: #555; margin-bottom: 24px;
 }
 .hero-actions .btn {
-  margin-right: 16px;
+  margin-right: 12px; padding: 10px 20px; font-size: 0.875rem;
 }
 .btn.primary {
-  background-color: #000;
-  color: #fff;
+  background: #000; color: #fff; text-align: center;
 }
+.btn.primary:hover { background: #333 }
 .btn.secondary {
-  background: none;
-  color: #000;
-  font-weight: bold;
+  background: none; color: #000; font-weight: bold;
 }
 .hero-stats {
-  list-style: none;
-  padding: 0;
-  margin: 32px 0 0;
-  display: flex;
-  gap: 48px;
+  display: flex; gap: 48px; margin-top: 32px; list-style: none;
 }
-.hero-stats .stat-number {
-  font-size: 1.25rem;
-  font-weight: bold;
+.hero-stats li { text-align: center }
+.stat-number {
+  display: block; font-size: 1.25rem; font-weight: bold;
 }
-.hero-stats .stat-label {
-  font-size: 0.875rem;
-  color: #666;
-}
-.hero-image {
-  flex: 1 1 400px;
-}
+.stat-label { font-size: 0.875rem; color: #666 }
+.hero-image { flex: 1 1 400px }
 .hero-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  object-fit: cover;
+  width: 100%; border-radius: 12px; display: block;
 }
 
 /* ==============================
-   푸터 (Footer)
+   푸터(Footer)
    ============================== */
 .site-footer {
-  background-color: #f8f8f8;
-  color: #555;
-  font-size: 0.875rem;
-  margin-top: 64px;
+  background: #f8f8f8; color: #555; font-size: 0.875rem; margin-top: 64px;
 }
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 40px 0;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; padding: 40px 0;
 }
-.footer-left,
-.footer-right {
-  flex: 1;
-  min-width: 240px;
+.footer-left, .footer-right {
+  flex: 1; min-width: 240px;
 }
 .footer-logo {
-  font-size: 1.125rem;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;
 }
-.footer-desc {
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-links li {
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
+.footer-desc { margin-bottom: 16px }
+.footer-links { list-style: none }
+.footer-links li { margin-bottom: 8px }
 .footer-bottom {
-  text-align: center;
-  padding: 16px 0;
-  font-size: 0.875rem;
-  color: #555;
+  text-align: center; padding: 16px 0;
   border-top: 1px solid #e0e0e0;
 }
 
 /* ==============================
-   반응형 조정 (Responsive)
+   반응형(Responsive)
    ============================== */
 @media (max-width: 900px) {
-  .hero-content {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-  .hero-text {
-    margin-top: 32px;
-  }
-  .hero-actions .btn {
-    display: inline-block;
-    margin: 0 8px 16px;
-  }
-  .hero-stats {
-    justify-content: center;
-    gap: 24px;
-  }
+  .hero-content { flex-direction: column-reverse; text-align: center }
+  .hero-text { margin-top: 32px }
+  .hero-actions .btn { margin: 0 8px 16px }
+  .hero-stats { justify-content: center }
 }
 @media (max-width: 768px) {
-  .footer-content {
-    padding: 24px 0;
-  }
-  .footer-left,
-  .footer-right {
-    min-width: 100%;
-    margin-bottom: 24px;
-  }
+  .footer-content { padding: 24px 0 }
+  .footer-left, .footer-right { min-width: 100%; margin-bottom: 24px }
 }
 @media (max-width: 600px) {
-  .site-header .container {
-    padding: 0 8px;
-    height: 56px;
-  }
-  .btn.kakao-login {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-  }
+  .site-header .container { height: 56px; padding: 0 8px }
+  .btn.kakao-login { padding: 6px 12px; font-size: 0.75rem }
 }
