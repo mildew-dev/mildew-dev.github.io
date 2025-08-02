@@ -8,7 +8,7 @@ a { text-decoration: none; color: inherit }
 .btn { display: inline-block; border-radius: 4px; cursor: pointer; transition: background-color 0.2s }
 
 /* ==============================
-   헤더(Header)
+   헤더 (Header)
    ============================== */
 .site-header {
   position: sticky; top: 0; background: #fff;
@@ -25,7 +25,7 @@ a { text-decoration: none; color: inherit }
 .btn.kakao-login:hover { background: #ffd800 }
 
 /* ==============================
-   메인(Main) & 히어로(Hero)
+   메인 (Main) & 히어로 (Hero)
    ============================== */
 .site-main { padding: 40px 0 }
 .hero-section { padding: 60px 0 }
@@ -60,7 +60,7 @@ a { text-decoration: none; color: inherit }
   display: block; font-size: 1.25rem; font-weight: bold;
 }
 .stat-label { font-size: 0.875rem; color: #666 }
-/* 히어로 이미지 스타일 */
+/* 히어로 이미지 */
 .hero-image { flex: 1 1 400px }
 .hero-image img {
   width: 100%; height: auto;
@@ -68,7 +68,7 @@ a { text-decoration: none; color: inherit }
 }
 
 /* ==============================
-   푸터(Footer)
+   푸터 (Footer)
    ============================== */
 .site-footer {
   background: #f8f8f8; color: #555; font-size: 0.875rem; margin-top: 64px;
@@ -83,16 +83,19 @@ a { text-decoration: none; color: inherit }
 .footer-logo {
   font-size: 1.125rem; font-weight: bold; margin-bottom: 8px;
 }
-.footer-desc { margin-bottom: 16px }
-.footer-links { list-style: none }
-.footer-links li { margin-bottom: 8px }
+.footer-links {
+  list-style: none; padding: 0; margin: 0;
+}
+.footer-links li {
+  margin-bottom: 8px; line-height: 1.5;
+}
 .footer-bottom {
   text-align: center; padding: 16px 0;
   border-top: 1px solid #e0e0e0;
 }
 
 /* ==============================
-   반응형(Responsive)
+   반응형 (Responsive)
    ============================== */
 @media (max-width: 900px) {
   .hero-content { flex-direction: column-reverse; text-align: center }
