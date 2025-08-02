@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CONTROL LIGHT - 시제품 제작</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <!-- Kakao SDK -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script>
+    // Kakao SDK 초기화
+    Kakao.init('YOUR_REST_API_KEY');
+  </script>
   <style>
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
@@ -22,7 +28,9 @@
       <a href="#about">회사소개</a>
       <a href="#contact">연락처</a>
     </nav>
-    <a href="#contact" class="ml-auto bg-black text-white px-4 py-2 rounded">시작하기</a>
+    $1
+      <!-- Kakao Login Button -->
+      <button id="kakao-login" class="ml-4 bg-yellow-400 text-black px-4 py-2 rounded">카카오 로그인</button>
   </div>
 </header>
 
@@ -167,6 +175,16 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
+    // Kakao 로그인 이벤트 핸들러
+    const kakaoBtn = document.getElementById('kakao-login');
+    if (kakaoBtn) {
+      kakaoBtn.addEventListener('click', () => {
+        Kakao.Auth.login({
+          success: authObj => console.log('Kakao 로그인 성공:', authObj),
+          fail: err => console.error('Kakao 로그인 실패:', err)
+        });
+      });
+    }
   });
 </script>
 
