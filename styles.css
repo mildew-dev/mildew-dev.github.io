@@ -12,7 +12,7 @@
    ============================== */
 .site-header {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
@@ -37,7 +37,7 @@
   font-size: 0.875rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 .btn.kakao-login:hover {
   background-color: #ffd800;
@@ -51,6 +51,76 @@
 }
 
 /* ==============================
+   히어로 섹션 (Hero)
+   ============================== */
+.hero-section {
+  padding: 60px 0;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1 1 400px;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #22c55e;
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-size: 2rem;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.hero-actions .btn {
+  margin-right: 16px;
+}
+.btn.primary {
+  background-color: #000;
+  color: #fff;
+}
+.btn.secondary {
+  background: none;
+  color: #000;
+  font-weight: bold;
+}
+.hero-stats {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: flex;
+  gap: 48px;
+}
+.hero-stats .stat-number {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.hero-stats .stat-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+.hero-image {
+  flex: 1 1 400px;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ==============================
    푸터 (Footer)
    ============================== */
 .site-footer {
@@ -59,43 +129,35 @@
   font-size: 0.875rem;
   margin-top: 64px;
 }
-
 .footer-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 40px 0;
 }
-
 .footer-left,
 .footer-right {
   flex: 1;
   min-width: 240px;
 }
-
 .footer-logo {
   font-size: 1.125rem;
   font-weight: bold;
   margin-bottom: 8px;
 }
-
 .footer-desc {
   margin-bottom: 16px;
   line-height: 1.5;
 }
-
 .footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .footer-links li {
   margin-bottom: 8px;
   line-height: 1.5;
 }
-
-/* 푸터 최하단 카피라이트 */
 .footer-bottom {
   text-align: center;
   padding: 16px 0;
@@ -107,6 +169,23 @@
 /* ==============================
    반응형 조정 (Responsive)
    ============================== */
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-text {
+    margin-top: 32px;
+  }
+  .hero-actions .btn {
+    display: inline-block;
+    margin: 0 8px 16px;
+  }
+  .hero-stats {
+    justify-content: center;
+    gap: 24px;
+  }
+}
 @media (max-width: 768px) {
   .footer-content {
     padding: 24px 0;
@@ -117,7 +196,6 @@
     margin-bottom: 24px;
   }
 }
-
 @media (max-width: 600px) {
   .site-header .container {
     padding: 0 8px;
