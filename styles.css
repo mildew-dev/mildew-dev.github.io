@@ -60,9 +60,11 @@ a { text-decoration: none; color: inherit }
   display: block; font-size: 1.25rem; font-weight: bold;
 }
 .stat-label { font-size: 0.875rem; color: #666 }
+/* 히어로 이미지 스타일 */
 .hero-image { flex: 1 1 400px }
 .hero-image img {
-  width: 100%; border-radius: 12px; display: block;
+  width: 100%; height: auto;
+  border-radius: 12px; object-fit: cover;
 }
 
 /* ==============================
