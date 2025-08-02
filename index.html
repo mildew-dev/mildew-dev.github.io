@@ -73,6 +73,15 @@
           <li>정기 보안 감사</li>
         </ul>
       </div>
+      <!-- New Quick Test Card -->
+      <div class="bg-gray-50 p-6 rounded shadow text-left">
+        <h4 class="font-semibold mb-2">🔌 빠른 테스트</h4>
+        <ul class="text-sm list-disc list-inside">
+          <li>모듈 사용을 통한 즉각적 하드웨어 검증</li>
+          <li>플러그 앤 플레이 프로토타이핑</li>
+          <li>테스트 시간 단축</li>
+        </ul>
+      </div>
       <div class="bg-gray-50 p-6 rounded shadow text-left">
         <h4 class="font-semibold mb-2">👥 팀 협업</h4>
         <ul class="text-sm list-disc list-inside">
@@ -155,66 +164,4 @@
           </div>
           <div>
             <h4 class="font-semibold">주소</h4>
-            <p class="text-gray-600">서울시 강남구 테헤란로</p>
-          </div>
-        </div>
-        <div class="flex items-center bg-white p-4 rounded-lg shadow">
-          <div class="bg-gray-100 p-3 rounded-full mr-4">
-            ⏰
-          </div>
-          <div>
-            <h4 class="font-semibold">운영시간</h4>
-            <p class="text-gray-600">평일 09:00 - 18:00</p>
-          </div>
-        </div>
-      </div>
-      <!-- Contact Form -->
-      <form class="bg-white p-6 rounded-lg shadow grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <input type="text" placeholder="이름 *" class="col-span-1 p-2 border rounded" required />
-        <input type="email" placeholder="이메일 *" class="col-span-1 p-2 border rounded" required />
-        <input type="text" placeholder="회사명" class="col-span-1 p-2 border rounded" />
-        <input type="tel" placeholder="연락처" class="col-span-1 p-2 border rounded" />
-        <input type="text" placeholder="제목 *" class="col-span-2 p-2 border rounded" required />
-        <textarea placeholder="메시지 *" class="col-span-2 p-2 border rounded h-40" required></textarea>
-        <button type="submit" class="col-span-2 bg-black text-white px-4 py-2 rounded mt-2">메시지 보내기</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-100 py-10 px-6 text-sm text-gray-600 reveal">
-    <div class="flex flex-col lg:flex-row justify-between">
-      <div>
-        <h4 class="font-bold mb-2">CONTROL LIGHT</h4>
-        <p>기술과 혁신으로</p>
-        <div class="flex space-x-3 mt-3">
-          <a href="#">🔗 Facebook</a>
-          <a href="#">🔗 Twitter</a>
-          <a href="#">🔗 LinkedIn</a>
-        </div>
-      </div>
-      <div class="mt-6 lg:mt-0">
-        <p><strong>서비스</strong>: 웹 개발 / 모바일 앱 / 컨설팅</p>
-        <p><strong>회사</strong>: 회사소개 / 채용 / 블로그</p>
-        <p><strong>연락처</strong>: 전북특별자치도 김제시 남북10길 44, 2층 입주공간 | 02-1234-5678</p>
-      </div>
-    </div>
-    <p class="text-center text-xs mt-6">© 2024 CONTROL LIGHT. 모든 권리 보유.</p>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const reveals = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      reveals.forEach(r => observer.observe(r));
-    });
-  </script>
-</body>
-</html>
+            <p class="text-gray-600">서울시 강남구 테헤란로
