@@ -1,15 +1,172 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>문의하기 - Control Light</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company - 쉽고 빠른 시제품 제작</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      line-height: 1.6;
+      color: #111;
+      background: #f9f9f9;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background-color: white;
+      border-bottom: 1px solid #eee;
+    }
+    header .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+    }
+    .btn-start {
+      background-color: #111;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 5%;
+      background-color: #fdfdfd;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+    .hero-text .badge {
+      display: inline-block;
+      background: #eee;
+      padding: 5px 10px;
+      font-size: 13px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      color: #333;
+    }
+    .hero-text h1 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .hero-text p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .hero-text .btns a {
+      margin-right: 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .btns .btn-primary {
+      background: #111;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+    }
+    .btns .btn-secondary {
+      color: #111;
+      border: 1px solid #ddd;
+      padding: 12px 20px;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
+      max-width: 500px;
+      position: relative;
+      margin-top: 30px;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 40px 0;
+      font-size: 16px;
+      background-color: #fff;
+      text-align: center;
+    }
+    .stats div span {
+      display: block;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-image {
+        margin-top: 20px;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body style="font-family:sans-serif; padding: 2rem;">
-  <h1>문의하기</h1>
-  <p>아래 이메일로 문의 주세요:</p>
-  <p><strong>ceo@ctrlight.com</strong></p>
-  <p><a href="/">← 메인 페이지로</a></p>
+<body>
+
+  <header>
+    <div class="logo">Company</div>
+    <nav>
+      <a href="#">홈</a>
+      <a href="#">서비스</a>
+      <a href="#">회사소개</a>
+      <a href="#">연락처</a>
+    </nav>
+    <a href="#" class="btn-start">시작하기</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="badge">🟢 새로운 서비스 출시</div>
+      <h1>쉽고 빠른 시제품 제작</h1>
+      <p>전문적이고 최신화된 기술로<br>당신의 사업에 부스터를 달아보세요.</p>
+      <div class="btns">
+        <a href="#" class="btn-primary">지금 시작하기 →</a>
+        <a href="#" class="btn-secondary">▶ 데모 보기</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df" alt="작업 중인 개발자" />
+    </div>
+  </section>
+
+  <section class="stats">
+    <div><span>500+</span>만족한 고객</div>
+    <div><span>98%</span>성공률</div>
+    <div><span>24/7</span>고객 지원</div>
+  </section>
+
 </body>
 </html>
