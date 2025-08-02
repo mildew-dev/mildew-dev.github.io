@@ -4,112 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Control Light</title>
-  <style>
-    /* ========== 공통 초기화 ========== */
-    * { box-sizing: border-box; margin:0; padding:0 }
-    body { font-family: 'Noto Sans KR',sans-serif; color:#333; line-height:1.5 }
-    .container { max-width:1200px; margin:0 auto; padding:0 16px }
-
-    /* ========== 헤더 ========== */
-    .site-header {
-      position: sticky; top:0; background:#fff;
-      box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:100;
-    }
-    .site-header .container {
-      height:64px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .logo { font-size:1.25rem; font-weight:700; letter-spacing:1px }
-    .btn.kakao-login {
-      background:#FEE500; color:#3C1E1E; border:none;
-      padding:8px 16px; border-radius:4px; cursor:pointer;
-    }
-    .btn.kakao-login:hover { background:#ffd800 }
-
-    /* ========== 메인 · 히어로 ========== */
-    .site-main { padding:40px 0 }
-    .hero-section { padding:60px 0 }
-    .hero-content {
-      display:flex; align-items:center; gap:40px; flex-wrap:wrap;
-    }
-    .hero-text { flex:1 1 400px }
-    .hero-badge {
-      font-size:0.875rem; color:#22c55e; margin-bottom:12px;
-      display:inline-block;
-    }
-    .hero-title {
-      font-size:2rem; margin-bottom:16px; line-height:1.2;
-    }
-    .hero-subtitle {
-      font-size:1rem; color:#555; margin-bottom:24px;
-    }
-    .hero-actions .btn {
-      margin-right:12px; padding:10px 20px; font-size:0.875rem;
-      text-decoration:none; display:inline-block;
-    }
-    .btn.primary {
-      background:#000; color:#fff; text-align:center;
-    }
-    .btn.primary:hover { background:#333 }
-    .btn.secondary {
-      background:none; color:#000; font-weight:700;
-    }
-    .hero-stats {
-      display:flex; gap:48px; margin-top:32px; list-style:none;
-    }
-    .hero-stats li { text-align:center }
-    .stat-number {
-      font-size:1.25rem; font-weight:700; display:block;
-    }
-    .stat-label { font-size:0.875rem; color:#666 }
-
-    .hero-image { flex:1 1 400px }
-    .hero-image img {
-      width:100%; border-radius:12px; display:block;
-    }
-
-    /* ========== 푸터 ========== */
-    .site-footer {
-      background:#f8f8f8; color:#555; font-size:0.875rem;
-      margin-top:64px;
-    }
-    .footer-content {
-      display:flex; justify-content:space-between;
-      flex-wrap:wrap; padding:40px 0;
-    }
-    .footer-left, .footer-right {
-      flex:1; min-width:240px;
-    }
-    .footer-logo {
-      font-size:1.125rem; font-weight:700; margin-bottom:8px;
-    }
-    .footer-desc { margin-bottom:16px }
-    .footer-links { list-style:none }
-    .footer-links li { margin-bottom:8px }
-    .footer-bottom {
-      text-align:center; padding:16px 0;
-      border-top:1px solid #e0e0e0;
-    }
-
-    /* ========== 반응형 ========== */
-    @media (max-width:900px) {
-      .hero-content { flex-direction:column-reverse; text-align:center }
-      .hero-text { margin-top:32px }
-      .hero-actions .btn { margin:0 8px 16px }
-      .hero-stats { justify-content:center }
-    }
-    @media (max-width:768px) {
-      .footer-content { padding:24px 0 }
-      .footer-left, .footer-right { min-width:100%; margin-bottom:24px }
-    }
-    @media (max-width:600px) {
-      .site-header .container { height:56px; padding:0 8px }
-      .btn.kakao-login { padding:6px 12px; font-size:0.75rem }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- ======= 헤더 ======= -->
   <header class="site-header">
     <div class="container">
       <div class="logo">CONTROL LIGHT</div>
@@ -117,11 +16,12 @@
     </div>
   </header>
 
-  <!-- 메인 -->
+  <!-- ======= 메인 콘텐츠 ======= -->
   <main class="site-main">
+    <!-- ======= 히어로 섹션 ======= -->
     <section class="hero-section">
       <div class="container hero-content">
-        <!-- 텍스트 -->
+        <!-- 좌측 텍스트 -->
         <div class="hero-text">
           <span class="hero-badge">● 새로운 서비스 출시</span>
           <h1 class="hero-title">쉽고 빠른 시제품 제작</h1>
@@ -147,16 +47,15 @@
             </li>
           </ul>
         </div>
-        <!-- 이미지 -->
+        <!-- 우측 이미지 -->
         <div class="hero-image">
-          <!-- 실제 이미지 경로로 바꿔 주세요 -->
-          <img src="https://via.placeholder.com/600x400" alt="시제품 제작 이미지">
+          <img src="images/hero.jpg" alt="시제품 제작 이미지">
         </div>
       </div>
     </section>
   </main>
 
-  <!-- 푸터 -->
+  <!-- ======= 푸터 ======= -->
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-left">
