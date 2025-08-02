@@ -44,6 +44,15 @@
     </div>
   </section>
 
+  <!-- Quick Test -->
+  <section id="quick-test" class="py-16 bg-gray-50 text-center reveal">
+    <h3 class="text-2xl font-bold mb-4">모듈 테스트</h3>
+    <p class="max-w-2xl mx-auto text-gray-600 mb-8">모듈 사용을 통한 빠른 하드웨어 검증이 가능합니다.</p>
+    <div class="flex justify-center">
+      <img src="https://images.unsplash.com/photo-1581091012184-594f9a9298d1" alt="modules" class="w-full max-w-md rounded shadow object-cover" loading="lazy" />
+    </div>
+  </section>
+
   <!-- Services -->
   <section id="services" class="py-16 bg-white text-center reveal">
     <h3 class="text-xl font-bold mb-6">포괄적인 솔루션 제공</h3>
@@ -129,10 +138,19 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.reveal').forEach(el => new IntersectionObserver(entries => {entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('active');entry.target.style.transitionDelay = '0.1s'}}, {threshold:0.1}).observe(el);
-      ");
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          entry.target.style.transitionDelay = '0.1s';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  });
+</script>
 </body>
 </html>
