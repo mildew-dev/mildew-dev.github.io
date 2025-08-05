@@ -64,18 +64,14 @@ a { text-decoration: none; color: inherit }
 .maintenance-section {
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* 가로 왼쪽 정렬 */
+  justify-content: center;  /* 가로 중앙 정렬 */
   height: 100%;
-}
-.maintenance-section .container {
-  /* 세로 중앙에 정렬된 상태에서, 내용만 왼쪽에 붙음 */
+  text-align: center;
 }
 .maintenance-message {
-  font-size: 3rem;
+  font-size: 2.5rem;        /* 폰트 크기 2.5rem로 조정 */
   color: #333;
   line-height: 1.6;
-  text-align: left;             /* 텍스트 왼쪽 정렬 */
-  max-width: 800px;             /* 너무 넓어지지 않게 */
 }
 
 /* ==============================
@@ -91,12 +87,12 @@ a { text-decoration: none; color: inherit }
 }
 .footer-content {
   display: flex;
-  justify-content: flex-start;  /* 왼쪽 정렬 */
+  justify-content: flex-start;
 }
 .footer-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;      /* 가운데 정렬 해제 */
+  align-items: flex-start;
 }
 .footer-logo {
   font-size: 1.125rem;
