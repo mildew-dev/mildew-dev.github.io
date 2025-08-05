@@ -1,32 +1,73 @@
-/* 초기화 & 공통 */
+/* ==============================
+   초기화 & 공통
+   ============================== */
 * { box-sizing: border-box; margin: 0; padding: 0 }
-body { font-family: 'Noto Sans KR', sans-serif; color: #333; line-height: 1.5 }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333;
+  line-height: 1.5;
+  /* 헤더(64px) + 푸터(80px) 여백 확보 */
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
 a { text-decoration: none; color: inherit }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 16px }
-.btn { display: inline-block; border-radius: 4px; cursor: pointer; transition: background-color .2s }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.btn {
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-/* 헤더 */
+/* ==============================
+   헤더(Header) 고정
+   ============================== */
 .site-header {
-  position: sticky; top: 0; background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 .site-header .container {
-  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 1px }
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 .btn.kakao-login {
-  background: #FEE500; color: #3C1E1E; border: none;
-  padding: 8px 16px; font-size: .875rem;
+  background: #FEE500;
+  color: #3C1E1E;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.875rem;
 }
-.btn.kakao-login:hover { background: #ffd800 }
+.btn.kakao-login:hover {
+  background: #ffd800;
+}
 
-/* 메인·점검중 */
-.site-main { min-height: calc(100vh - 64px - 120px); /* 헤더 64 + 푸터 여유 */ }
+/* ==============================
+   메인(Main) · 점검중(Maintenance)
+   ============================== */
+.site-main {
+  /* full height minus header/footer */
+  min-height: calc(100vh - 64px - 80px);
+}
 .maintenance-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 64px - 120px);
+  height: 100%;
   text-align: center;
 }
 .maintenance-message {
@@ -35,30 +76,67 @@ a { text-decoration: none; color: inherit }
   line-height: 1.6;
 }
 
-/* 푸터 */
+/* ==============================
+   푸터(Footer) 고정
+   ============================== */
 .site-footer {
-  background: #f8f8f8; color: #555; font-size: .875rem;
-  border-top: 1px solid #e0e0e0; padding: 24px 0;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #f8f8f8;
+  border-top: 1px solid #e0e0e0;
+  padding: 24px 0;
+  z-index: 999;
 }
 .footer-content {
-  display: flex; justify-content: space-between;
-  align-items: flex-start; flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .footer-left {
-  display: flex; flex-direction: column; align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-.footer-logo { font-size: 1.125rem; font-weight: bold; margin-bottom: 4px }
-.footer-copy { font-size: .75rem; color: #888 }
-.footer-right { flex: 1; min-width: 240px }
-.footer-links { list-style: none; padding: 0; margin: 0 }
-.footer-links li { margin-bottom: 6px; line-height: 1.4 }
-.footer-links a { text-decoration: underline }
+.footer-logo {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: #888;
+}
+.footer-right {
+  flex: 1;
+  min-width: 240px;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.footer-links a {
+  text-decoration: underline;
+}
 
-/* 반응형 */
+/* ==============================
+   반응형(Responsive)
+   ============================== */
 @media (max-width: 768px) {
   .maintenance-section { min-height: 50vh }
   .footer-content {
-    flex-direction: column; align-items: center; text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .footer-left, .footer-right { min-width: 100%; margin-bottom: 16px }
+  .footer-left,
+  .footer-right {
+    min-width: 100%;
+    margin-bottom: 16px;
+  }
 }
