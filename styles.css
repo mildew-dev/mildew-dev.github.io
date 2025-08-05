@@ -1,14 +1,11 @@
-/* ==============================
-   초기화 & 공통
-   ============================== */
+/* 초기화 & 공통 */
 * { box-sizing: border-box; margin: 0; padding: 0 }
 body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
   line-height: 1.5;
-  /* 헤더(64px) + 푸터(약80px) 여백 확보 */
-  padding-top: 64px;
-  padding-bottom: 80px;
+  padding-top: 64px;    /* 헤더 높이 확보 */
+  padding-bottom: 80px; /* 푸터 높이 확보 */
 }
 a { text-decoration: none; color: inherit }
 .container {
@@ -23,9 +20,7 @@ a { text-decoration: none; color: inherit }
   transition: background-color 0.2s;
 }
 
-/* ==============================
-   헤더(Header) 고정
-   ============================== */
+/* 헤더 고정 */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -56,9 +51,7 @@ a { text-decoration: none; color: inherit }
   background: #ffd800;
 }
 
-/* ==============================
-   메인(Main) · 점검중(Maintenance)
-   ============================== */
+/* 메인 · 점검중 */
 .site-main {
   min-height: calc(100vh - 64px - 80px);
 }
@@ -75,9 +68,7 @@ a { text-decoration: none; color: inherit }
   line-height: 1.6;
 }
 
-/* ==============================
-   푸터(Footer) 고정 & 왼쪽 정렬
-   ============================== */
+/* 푸터 고정 & 왼쪽 정렬 */
 .site-footer {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -86,15 +77,14 @@ a { text-decoration: none; color: inherit }
   padding: 24px 0;
   z-index: 999;
 }
-/* 왼쪽 정렬로 변경 */
 .footer-content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; /* 왼쪽 정렬 */
 }
 .footer-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 가운데 정렬 해제 */
+  align-items: flex-start;     /* 가운데 정렬 해제 */
 }
 .footer-logo {
   font-size: 1.125rem;
@@ -103,9 +93,9 @@ a { text-decoration: none; color: inherit }
 }
 .footer-info {
   list-style: none;
+  margin: 0 0 8px;
   padding: 0;
-  margin: 0 0 8px 0;
-  text-align: left;  /* 가운데 정렬 해제 */
+  text-align: left;             /* 왼쪽 정렬 */
 }
 .footer-info li {
   margin-bottom: 4px;
@@ -119,10 +109,9 @@ a { text-decoration: none; color: inherit }
   color: #888;
 }
 
-/* ==============================
-   반응형(Responsive)
-   ============================== */
+/* 반응형 */
 @media (max-width: 768px) {
-  .site-main { padding-top: 0 }
-  .maintenance-section { min-height: 50vh }
+  .maintenance-section {
+    min-height: 50vh;
+  }
 }
