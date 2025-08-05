@@ -6,9 +6,8 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
   line-height: 1.5;
-  /* 헤더(64px) + 푸터(80px) 여백 확보 */
-  padding-top: 64px;
-  padding-bottom: 80px;
+  padding-top: 64px;    /* 헤더 높이 확보 */
+  padding-bottom: 80px; /* 푸터 높이 확보 */
 }
 a { text-decoration: none; color: inherit }
 .container {
@@ -60,7 +59,6 @@ a { text-decoration: none; color: inherit }
    메인(Main) · 점검중(Maintenance)
    ============================== */
 .site-main {
-  /* full height minus header/footer */
   min-height: calc(100vh - 64px - 80px);
 }
 .maintenance-section {
@@ -89,54 +87,44 @@ a { text-decoration: none; color: inherit }
 }
 .footer-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 .footer-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 .footer-logo {
   font-size: 1.125rem;
   font-weight: bold;
+  margin-bottom: 8px;
+}
+.footer-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+.footer-info li {
   margin-bottom: 4px;
+  line-height: 1.4;
+}
+.footer-info a {
+  text-decoration: underline;
 }
 .footer-copy {
   font-size: 0.75rem;
   color: #888;
-}
-.footer-right {
-  flex: 1;
-  min-width: 240px;
-}
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-links li {
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-.footer-links a {
-  text-decoration: underline;
 }
 
 /* ==============================
    반응형(Responsive)
    ============================== */
 @media (max-width: 768px) {
-  .maintenance-section { min-height: 50vh }
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .site-main {
+    padding-top: 0; /* 모바일에서 충분히 여유가 있을 경우 */
   }
-  .footer-left,
-  .footer-right {
-    min-width: 100%;
-    margin-bottom: 16px;
+  .maintenance-section {
+    min-height: 50vh;
   }
 }
