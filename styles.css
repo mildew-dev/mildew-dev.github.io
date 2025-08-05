@@ -6,8 +6,9 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
   line-height: 1.5;
-  padding-top: 64px;    /* 헤더 높이 확보 */
-  padding-bottom: 80px; /* 푸터 높이 확보 */
+  /* 헤더(64px) + 푸터(약80px) 여백 확보 */
+  padding-top: 64px;
+  padding-bottom: 80px;
 }
 a { text-decoration: none; color: inherit }
 .container {
@@ -69,13 +70,13 @@ a { text-decoration: none; color: inherit }
   text-align: center;
 }
 .maintenance-message {
-  font-size: 3rem;  /* 폰트 크기 키움 */
+  font-size: 3rem;
   color: #333;
   line-height: 1.6;
 }
 
 /* ==============================
-   푸터(Footer) 고정
+   푸터(Footer) 고정 & 왼쪽 정렬
    ============================== */
 .site-footer {
   position: fixed;
@@ -85,14 +86,15 @@ a { text-decoration: none; color: inherit }
   padding: 24px 0;
   z-index: 999;
 }
+/* 왼쪽 정렬로 변경 */
 .footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .footer-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* 가운데 정렬 해제 */
 }
 .footer-logo {
   font-size: 1.125rem;
@@ -103,7 +105,7 @@ a { text-decoration: none; color: inherit }
   list-style: none;
   padding: 0;
   margin: 0 0 8px 0;
-  text-align: center;
+  text-align: left;  /* 가운데 정렬 해제 */
 }
 .footer-info li {
   margin-bottom: 4px;
