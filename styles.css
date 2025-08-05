@@ -69,7 +69,7 @@ a { text-decoration: none; color: inherit }
   text-align: center;
 }
 .maintenance-message {
-  font-size: 2rem;
+  font-size: 3rem;  /* 폰트 크기 키움 */
   color: #333;
   line-height: 1.6;
 }
@@ -121,10 +121,6 @@ a { text-decoration: none; color: inherit }
    반응형(Responsive)
    ============================== */
 @media (max-width: 768px) {
-  .site-main {
-    padding-top: 0; /* 모바일에서 충분히 여유가 있을 경우 */
-  }
-  .maintenance-section {
-    min-height: 50vh;
-  }
+  .site-main { padding-top: 0 }
+  .maintenance-section { min-height: 50vh }
 }
