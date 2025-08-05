@@ -1,92 +1,135 @@
-/* 초기화 & 공통 */
-* { box-sizing: border-box; margin:0; padding:0 }
-body { font-family:'Noto Sans KR',sans-serif; color:#333; line-height:1.5 }
-a { text-decoration:none; color:inherit }
-.container { max-width:1200px; margin:0 auto; padding:0 16px }
-.btn { display:inline-block; border-radius:4px; cursor:pointer; transition:background-color .2s }
+/* ==============================
+   초기화 & 공통
+   ============================== */
+* { box-sizing: border-box; margin: 0; padding: 0 }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+a { text-decoration: none; color: inherit }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.btn {
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-/* 헤더 */
+/* ==============================
+   헤더(Header)
+   ============================== */
 .site-header {
-  position:sticky; top:0; background:#fff;
-  box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:100;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 .site-header .container {
-  height:64px; display:flex; align-items:center; justify-content:space-between;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.logo { font-size:1.25rem; font-weight:700; letter-spacing:1px }
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 .btn.kakao-login {
-  background:#FEE500; color:#3C1E1E; border:none;
-  padding:8px 16px; font-size:.875rem;
+  background: #FEE500;
+  color: #3C1E1E;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.875rem;
 }
-.btn.kakao-login:hover { background:#ffd800 }
-
-/* 메인 & 히어로 */
-.site-main { padding:40px 0 }
-.hero-section { padding:60px 0 }
-.hero-content {
-  display:flex; align-items:center; gap:40px; flex-wrap:wrap;
-}
-.hero-text { flex:1 1 400px }
-.hero-badge { display:inline-block; font-size:.875rem; color:#22c55e; margin-bottom:12px }
-.hero-title { font-size:2rem; margin-bottom:16px; line-height:1.2 }
-.hero-subtitle { font-size:1rem; color:#555; margin-bottom:24px }
-.hero-actions .btn { margin-right:12px; padding:10px 20px; font-size:.875rem }
-.btn.primary { background:#000; color:#fff }
-.btn.primary:hover { background:#333 }
-.btn.secondary { background:none; color:#000; font-weight:700 }
-.hero-stats {
-  display:flex; gap:48px; margin-top:32px; list-style:none;
-}
-.hero-stats li { text-align:center }
-.stat-number { display:block; font-size:1.25rem; font-weight:700 }
-.stat-label { font-size:.875rem; color:#666 }
-.hero-image { flex:1 1 400px }
-.hero-image img {
-  width:100%; height:auto; border-radius:12px; object-fit:cover;
+.btn.kakao-login:hover {
+  background: #ffd800;
 }
 
-/* 푸터 */
+/* ==============================
+   메인(Main) · 점검중(Maintenance)
+   ============================== */
+.site-main {
+  padding: 120px 0;
+}
+.maintenance-section {
+  text-align: center;
+}
+.maintenance-message {
+  font-size: 1.5rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ==============================
+   푸터(Footer)
+   ============================== */
 .site-footer {
-  background:#f8f8f8; color:#555; font-size:.875rem;
-  margin-top:64px; border-top:1px solid #e0e0e0;
+  background: #f8f8f8;
+  color: #555;
+  font-size: 0.875rem;
+  margin-top: 64px;
+  border-top: 1px solid #e0e0e0;
 }
 .footer-content {
-  display:flex; justify-content:space-between;
-  align-items:flex-start;  /* 최상단(로고 기준) 정렬 */
-  flex-wrap:wrap; padding:24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 24px 0;
 }
 .footer-left {
-  display:flex; flex-direction:column; align-items:flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .footer-logo {
-  font-size:1.125rem; font-weight:700; margin-bottom:4px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 4px;
 }
 .footer-copy {
-  font-size:.75rem; color:#888;
+  font-size: 0.75rem;
+  color: #888;
 }
 .footer-right {
-  flex:1; min-width:240px;
+  flex: 1;
+  min-width: 240px;
 }
 .footer-links {
-  list-style:none; padding:0; margin:0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .footer-links li {
-  margin-bottom:6px; line-height:1.4;
+  margin-bottom: 6px;
+  line-height: 1.4;
 }
-.footer-links a { text-decoration:underline }
+.footer-links a {
+  text-decoration: underline;
+}
 
-/* 반응형 */
-@media(max-width:768px) {
-  .hero-content {
-    flex-direction:column-reverse; text-align:center;
+/* ==============================
+   반응형(Responsive)
+   ============================== */
+@media (max-width: 768px) {
+  .site-main {
+    padding: 80px 0;
   }
-  .hero-text { margin-top:32px }
-  .hero-actions .btn { margin:0 8px 16px }
-  .hero-stats { justify-content:center }
   .footer-content {
-    flex-direction:column; align-items:center; text-align:center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .footer-left, .footer-right {
-    min-width:100%; margin-bottom:16px;
+  .footer-left,
+  .footer-right {
+    min-width: 100%;
+    margin-bottom: 16px;
   }
 }
