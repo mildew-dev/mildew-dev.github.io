@@ -1,0 +1,195 @@
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    padding-top: 70px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background-color: #1e293b;
+    padding: 40px;
+    border-radius: 15px;
+    transition: 0.3s;
+    border: 1px solid #334155;
+}
+
+.service-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
+
+.services-outro {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+.section-alt {
+    background-color: #0b1120;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background: #1e293b;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #334155;
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 200px;
+    background-color: #334155;
+    background-size: cover;
+    background-position: center;
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-tag {
+    color: #38bdf8;
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    background-color: #111827;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 5px solid #38bdf8;
+    margin-bottom: 20px;
+}
+
+.step-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #38bdf8;
+    margin-right: 30px;
+    min-width: 50px;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    background: #1e293b;
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+}
+
+.contact-info h3 {
+    margin-bottom: 12px;
+}
+
+.contact-lead {
+    margin: 20px 0;
+    color: #94a3b8;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+}
+
+.file-upload-box {
+    border: 2px dashed #334155;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.file-upload-box:hover,
+.file-upload-box:focus {
+    border-color: #38bdf8;
+    background: #1a2438;
+    outline: none;
+}
+
+.kakao-chat-fixed {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.kakao-label {
+    background-color: #fef01b;
+    color: #3c1e1e;
+    padding: 10px 18px;
+    border-radius: 25px;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.kakao-icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #fef01b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

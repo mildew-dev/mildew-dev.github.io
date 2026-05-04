@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Light | 설문형 문의</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        .survey-page { min-height: 100vh; padding-top: 110px; }
+        .survey-shell {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+        .survey-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .survey-header h1 {
+            font-size: 2.6rem;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+        .survey-header p {
+            color: #94a3b8;
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        .survey-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 36px;
+        }
+        .survey-top-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .survey-back,
+        .survey-mail {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            background: #0f172a;
+            transition: 0.2s ease;
+        }
+        .survey-back:hover,
+        .survey-mail:hover {
+            border-color: #38bdf8;
+            color: #f8fafc;
+        }
+        .survey-note {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .survey-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .survey-fields .full {
+            grid-column: 1 / -1;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+        .survey-submit-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .survey-submit-row .btn-primary {
+            min-width: 200px;
+        }
+        .file-upload-box {
+            border: 2px dashed #334155;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .file-upload-box:hover {
+            border-color: #38bdf8;
+            background: #1a2438;
+        }
+        @media (max-width: 768px) {
+            .survey-header h1 { font-size: 2rem; }
+            .survey-box { padding: 24px; }
+            .survey-fields { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">CONTROL LIGHT</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">홈</a></li>
+                    <li><a href="index.html#services">기술역량</a></li>
+                    <li><a href="index.html#portfolio">포트폴리오</a></li>
+                    <li><a href="index.html#process">제작과정</a></li>
+                    <li><a href="index.html#contact">문의하기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="survey-page">
+        <div class="survey-shell">
+            <div class="survey-header">
+                <h1>설문형 문의로<br><span style="color:#38bdf8;">차근차근 정리해보세요</span></h1>
+                <p>아직 프로젝트 내용이 완전히 정리되지 않았더라도 괜찮습니다. 아래 질문에 답하면서 필요한 내용을 하나씩 정리해 주시면, 검토에 필요한 기본 정보를 빠르게 파악할 수 있습니다.</p>
+            </div>
+
+            <div class="survey-box">
+                <div class="survey-top-actions">
+                    <a href="index.html#contact" class="survey-back">← 문의 방식 선택으로 돌아가기</a>
+                    <a href="mailto:help@techpro.com?subject=%5BControl%20Light%20%EB%AC%B8%EC%9D%98%5D%20%EC%8B%9C%EC%A0%9C%ED%92%88%20%EA%B0%9C%EB%B0%9C%20%EC%83%81%EB%8B%B4" class="survey-mail">자료가 준비되셨다면 메일로 바로 보내기</a>
+                </div>
+
+                <p class="survey-note">설문형 문의는 고객이 필요한 정보를 빠뜨리지 않도록 돕기 위한 시작점입니다. 지금 단계에서 정확하지 않아도 괜찮고, 아는 범위에서만 작성해 주셔도 됩니다.</p>
+
+                <form class="contact-form" id="inquiryForm">
+                    <div class="survey-fields">
+                        <input type="text" id="userName" placeholder="성함 / 업체명" required>
+                        <input type="email" id="userEmail" placeholder="이메일 주소" required>
+                        <input type="text" class="full" placeholder="연락 가능한 전화번호 (선택)">
+                        <select class="full">
+                            <option value="">필요한 개발 범위를 선택해 주세요</option>
+                            <option>회로설계</option>
+                            <option>PCB 아트웍</option>
+                            <option>펌웨어 개발</option>
+                            <option>앱 개발</option>
+                            <option>프로그램 개발</option>
+                            <option>웹 개발</option>
+                            <option>DB 구축</option>
+                            <option>3D 모델링</option>
+                            <option>여러 항목 함께 필요</option>
+                        </select>
+                        <textarea class="full" rows="4" placeholder="만들고 싶은 제품이나 기능을 자유롭게 적어주세요"></textarea>
+                        <textarea class="full" rows="4" id="userMsg" placeholder="현재까지 정리된 내용, 필요한 기능, 고민 중인 점 등을 적어주세요" required></textarea>
+                        <textarea class="full" rows="3" placeholder="예상 일정이나 목표 납기, 예산이 있다면 적어주세요 (선택)"></textarea>
+                    </div>
+
+                    <div class="file-upload-box" id="fileUploadBox" tabindex="0" role="button" aria-label="파일 첨부">
+                        <span id="fileNameDisplay">📁 참고 자료 첨부 (사진, 영상, 문서)</span>
+                        <input type="file" id="userFile" accept="image/*,video/*" hidden>
+                    </div>
+
+                    <div class="survey-submit-row">
+                        <button type="submit" id="submitBtn" class="btn-primary">설문형 문의 보내기</button>
+                        <a href="index.html#contact" class="survey-back">메인 페이지로 돌아가기</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Control Light. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+</html>

@@ -1,56 +1,442 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Control Light – 쉽고 빠른 시제품 제작</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Light | 시제품 제작 전문 (회로, PCB, 펌웨어, 앱)</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        body.hero-intro-fade {
+            background-color: #000000;
+            animation: bodyBgFade 1.8s ease forwards;
+        }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: #000000 !important;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            opacity: 0;
+            animation: heroGradientFade 1.8s ease forwards;
+            pointer-events: none;
+        }
+        .hero > .container {
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes bodyBgFade {
+            from { background-color: #000000; }
+            to { background-color: #0f172a; }
+        }
+        @keyframes heroGradientFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .contact-entry { display: flex; flex-direction: column; gap: 18px; }
+        .contact-choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+        .contact-choice-btn {
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #f1f5f9;
+            padding: 22px 20px;
+            border-radius: 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: block;
+        }
+        .contact-choice-btn:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.28);
+        }
+        .contact-choice-btn strong { display: block; font-size: 1.05rem; margin-bottom: 8px; color: #38bdf8; }
+        .contact-choice-btn span { display: block; font-size: 0.95rem; color: #94a3b8; line-height: 1.55; }
+        .contact-form.is-hidden { display: none; }
+        @media (max-width: 768px) {
+            .contact-choice-grid { grid-template-columns: 1fr; }
+        }
+
+        .contact-inline-title { font-size: 1.2rem; margin-bottom: 8px; }
+        .contact-inline-note { color: #94a3b8; margin-bottom: 6px; }
+        .contact-inline-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .contact-inline-back {
+            padding: 15px 22px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .contact-inline-back:hover {
+            border-color: #38bdf8;
+            color: #f8fafc;
+        }
+
+        #services .service-card {
+            opacity: 0;
+            transform: translateY(52px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition-delay: var(--motion-delay, 0s);
+            will-change: opacity, transform;
+        }
+        #services .service-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-step {
+            opacity: 0;
+            transform: translateX(72px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+            transition-delay: var(--motion-delay, 0s);
+            will-change: opacity, transform;
+        }
+        .process-step.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .footer-company-info {
+            margin-top: 18px;
+            padding-top: 22px;
+            border-top: 1px solid #1e293b;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 24px;
+            text-align: left;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .footer-company-info strong {
+            color: #e2e8f0;
+            margin-right: 6px;
+        }
+        @media (max-width: 768px) {
+            .footer-company-info {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body.hero-intro-fade {
+                animation: none;
+                background-color: #0f172a;
+            }
+            .hero::before {
+                animation: none;
+                opacity: 1;
+            }
+            #services .service-card,
+            .process-step {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- ======= 헤더 ======= -->
-  <header class="site-header">
-    <div class="container">
-      <div class="logo">CONTROL LIGHT</div>
-      <button class="btn kakao-login">카카오 로그인</button>
-    </div>
-  </header>
-
-  <!-- ======= 메인 · 점검중 ======= -->
-  <main class="site-main">
-    <section class="maintenance-section">
-      <div class="container">
-        <p class="maintenance-message">
-          <br/><br/><br/>
-          홈페이지 점검중입니다.<br/>
-          불편을 드려서 죄송합니다.<br/><br/>
-          시제품 제작 상담 문의는 
-          <a href="mailto:ceo@ctrlight.com">ceo@ctrlight.com</a>으로 연락 주세요.<br/>
-          요청 시, 유선 상담 가능합니다.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <!-- ======= 푸터 ======= -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <div class="footer-logo">CONTROL LIGHT</div>
-        <ul class="footer-info">
-          <li><strong>대표:</strong> 최진수</li>
-          <li><strong>주소:</strong> 김제시 남북</li>
-          <li><strong>메일주소:</strong>
-            <a href="mailto:ceo@ctrlight.com">ceo@ctrlight.com</a>
-          </li>
-        </ul>
-        <div class="footer-links">
-          <a href="privacy.html">개인정보처리방침</a>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">CONTROL LIGHT</div>
+                <ul class="nav-links">
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#services">기술역량</a></li>
+                    <li><a href="#portfolio">포트폴리오</a></li>
+                    <li><a href="#process">제작과정</a></li>
+                    <li><a href="#contact">문의하기</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="footer-copy">© 2024 CONTROL LIGHT. 모든 권리 보유.</div>
-      </div>
-    </div>
-  </footer>
+    </header>
 
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>아이디어,<br><span>그 무한한 에너지를 빛으로</span></h1>
+            <p>아이디어 구체화부터 시제품 구현까지<br>제품 개발의 모든 과정을 함께합니다</p>
+            <a href="#contact" class="btn-primary">프로젝트 의뢰하기</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">저희와 함께 <span>하시면</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3>회로설계</h3>
+                    <p>안정적이고 효율적인 맞춤형 회로 설계를 제공합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🛠️</span>
+                    <h3>PCB 아트웍</h3>
+                    <p>최적화된 패턴 설계와 노이즈 저감 기술을 적용한 PCB 아트웍을 지원합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💾</span>
+                    <h3>펌웨어 개발</h3>
+                    <p>MCU 제어 및 통신 프로토콜 구현 등 하드웨어 제어 소프트웨어를 지원합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📱</span>
+                    <h3>앱 개발</h3>
+                    <p>BLE/Wi-Fi 연동 등 기기와 실시간 통신이 가능한 전용 앱을 개발합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🖥️</span>
+                    <h3>프로그램 개발</h3>
+                    <p>제품 특성에 맞춘 전용 프로그램과 운영 도구를 개발합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🌐</span>
+                    <h3>웹 개발</h3>
+                    <p>관리 페이지, 소개 페이지, 연동용 웹 인터페이스를 개발합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🗄️</span>
+                    <h3>DB 구축</h3>
+                    <p>데이터 저장 구조 설계와 연동에 필요한 DB 구축을 지원합니다.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🧊</span>
+                    <h3>3D 모델링</h3>
+                    <p>시제품 구현과 검토에 필요한 3D 모델링 작업을 지원합니다.</p>
+                </div>
+            </div>
+            <p class="services-outro">제품 아이디어를 현실로 만드는 모든 과정을 함께합니다.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">주요 <span>제작 사례</span></h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=500');"></div>
+                    <div class="portfolio-info">
+                        <h4>산업용 IoT 센서</h4>
+                        <p class="portfolio-tag">Circuit / Firmware</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500');"></div>
+                    <div class="portfolio-info">
+                        <h4>스마트 헬스케어 기기</h4>
+                        <p class="portfolio-tag">PCB / BLE App</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?w=500');"></div>
+                    <div class="portfolio-info">
+                        <h4>전동 킥보드 컨트롤러</h4>
+                        <p class="portfolio-tag">Hardware Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">제작 <span>프로세스</span></h2>
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div>
+                    <h3>상담</h3>
+                    <p>편하게 문의해 주세요. 요청 내용을 확인하고 필요한 사항을 함께 정리해드립니다.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div>
+                    <h3>견적</h3>
+                    <p>상담 후 작업 범위, 포함 항목, 예상 일정 등을 정리하여 견적을 안내드립니다.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div>
+                    <h3>DNA 계약서 작성</h3>
+                    <p>작업 범위와 진행 조건을 확인한 뒤 DNA 계약서를 작성하고 작업을 준비합니다.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div>
+                    <h3>작업 진행</h3>
+                    <p>합의된 내용에 따라 설계, 개발, 제작, 테스트 작업을 순차적으로 진행합니다.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div>
+                    <h3>결과물 전달 및 결제</h3>
+                    <p>작업 결과물을 전달드리고 확인이 끝나면 최종 결제를 진행합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">문의는 <span>편한 방식으로</span> 시작하세요</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>정리된 문의도, 아직 막연한 아이디어도 괜찮습니다.</h3>
+                    <p class="contact-lead">이미 내용이 정리된 고객은 바로 문의 폼으로 빠르게 접수하고, 아직 방향이 정리되지 않았거나 무엇을 준비해야 할지 잘 모르겠다면 설문형 문의 페이지에서 질문에 답하면서 필요한 내용을 차근차근 정리할 수 있습니다.</p>
+                    <p>📍 서울시 강남구 기술타워 4층</p>
+                    <p>📞 02-1234-5678</p>
+                    <p>📧 help@techpro.com</p>
+                </div>
+
+                <div class="contact-entry" id="contactEntry">
+                    <div>
+                        <h3>원하는 문의 방식을 선택해 주세요.</h3>
+                        <p class="contact-lead">정리된 내용은 바로 문의 폼으로 빠르게 접수하고, 아직 준비가 덜 되었다면 설문형 문의 페이지로 이동해 질문에 따라 상담을 시작할 수 있습니다.</p>
+                    </div>
+
+                    <div class="contact-choice-grid" id="contactChoiceGrid">
+                        <button type="button" class="contact-choice-btn" id="showDirectInquiryButton">
+                            <strong>바로 문의하기</strong>
+                            <span>이미 준비된 자료나 요구사항이 있다면, 아래 문의 폼을 바로 열어 빠르게 접수할 수 있습니다. 필요한 자료가 있다면 첨부해서 함께 전달해 주세요.</span>
+                        </button>
+                        <a class="contact-choice-btn" href="survey.html">
+                            <strong>설문형 문의로 시작하기</strong>
+                            <span>아직 정리가 덜 되었거나 어떤 정보를 먼저 준비해야 할지 모르겠다면, 별도 설문 페이지에서 질문에 답하면서 필요한 내용을 차근차근 정리할 수 있습니다.</span>
+                        </a>
+                    </div>
+
+                    <form class="contact-form is-hidden" id="inquiryForm" aria-hidden="true">
+                        <h3 class="contact-inline-title">바로 문의하기</h3>
+                        <p class="contact-inline-note">정리된 내용을 바로 보내주시면 빠르게 검토할 수 있습니다. 필요한 자료가 있다면 함께 첨부해 주세요.</p>
+                        <input type="text" id="userName" placeholder="성함 / 업체명" required>
+                        <input type="email" id="userEmail" placeholder="이메일 주소" required>
+                        <textarea id="userMsg" rows="5" placeholder="프로젝트 내용을 간단히 적어주세요" required></textarea>
+
+                        <div class="file-upload-box" id="fileUploadBox" tabindex="0" role="button" aria-label="파일 첨부">
+                            <span id="fileNameDisplay">📁 사진 또는 동영상 첨부 (클릭)</span>
+                            <input type="file" id="userFile" accept="image/*,video/*" hidden>
+                        </div>
+
+                        <div class="contact-inline-actions">
+                            <button type="submit" id="submitBtn" class="btn-primary">견적 문의 신청하기</button>
+                            <button type="button" class="contact-inline-back" id="hideDirectInquiryButton">선택 화면으로 돌아가기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Control Light. All Rights Reserved.</p>
+        <div class="footer-company-info">
+            <p><strong>상호명</strong> 컨트롤 라이트</p>
+            <p><strong>대표</strong> 홍길동</p>
+            <p><strong>사업자등록번호</strong> 123-45-67890</p>
+            <p><strong>주소</strong> 전라북도 김제시 예시로 123, 2층</p>
+            <p><strong>이메일</strong> contact@controllight.co.kr</p>
+            <p><strong>연락처</strong> 010-1234-5678</p>
+        </div>
+    </footer>
+
+    <div class="kakao-chat-fixed" id="kakaoChatButton">
+        <div class="kakao-label">실시간 상담</div>
+        <div class="kakao-icon-circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.712 4.8 4.32 6.04-.19.644-.69 2.338-.79 2.674-.16.54.17.53.36.4.15-.1.2.39 2.75-1.7 1.13.15 2.31.23 3.51.23 4.97 0 9-3.18 9-7.11S16.97 3 12 3z"></path></svg>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('hero-intro-fade');
+
+            const inquiryForm = document.getElementById('inquiryForm');
+            const showDirectInquiryButton = document.getElementById('showDirectInquiryButton');
+            const hideDirectInquiryButton = document.getElementById('hideDirectInquiryButton');
+            const contactEntry = document.getElementById('contactEntry');
+
+            if (!inquiryForm || !showDirectInquiryButton || !hideDirectInquiryButton || !contactEntry) return;
+
+            const showInquiryForm = () => {
+                inquiryForm.classList.remove('is-hidden');
+                inquiryForm.setAttribute('aria-hidden', 'false');
+                inquiryForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            const hideInquiryForm = () => {
+                inquiryForm.classList.add('is-hidden');
+                inquiryForm.setAttribute('aria-hidden', 'true');
+                contactEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            showDirectInquiryButton.addEventListener('click', showInquiryForm);
+            hideDirectInquiryButton.addEventListener('click', hideInquiryForm);
+
+            const serviceCards = document.querySelectorAll('#services .service-card');
+            if (serviceCards.length) {
+                serviceCards.forEach((card, index) => {
+                    card.style.setProperty('--motion-delay', `${index * 0.08}s`);
+                });
+
+                const serviceObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.14,
+                    rootMargin: '0px 0px -10% 0px'
+                });
+
+                serviceCards.forEach((card) => serviceObserver.observe(card));
+            }
+
+            const processSteps = document.querySelectorAll('.process-step');
+            if (processSteps.length) {
+                processSteps.forEach((step, index) => {
+                    step.style.setProperty('--motion-delay', `${index * 0.12}s`);
+                });
+
+                const processObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        } else {
+                            entry.target.classList.remove('is-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -8% 0px'
+                });
+
+                processSteps.forEach((step) => processObserver.observe(step));
+            }
+        });
+    </script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/contact.js"></script>
 </body>
 </html>
